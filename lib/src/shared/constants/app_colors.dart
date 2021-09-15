@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  static const Color purple = Color.fromRGBO(34, 0, 85, 1);
+  static const Color black = Color.fromRGBO(0, 0, 0, 1);
+
+  static const Color blueLight = Color.fromRGBO(0, 140, 148, 1);
+
   static const MaterialColor primaryMaterialColor = MaterialColor(0XFF4850b0, {
     50: Color.fromRGBO(72, 80, 176, 0.05),
     100: Color.fromRGBO(72, 80, 176, 0.1),
