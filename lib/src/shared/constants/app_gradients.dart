@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class AppGradients {
   static const purpleGradient = LinearGradient(
     colors: <Color>[
-      AppColors.blueLight,
       AppColors.purple,
+      AppColors.wine,
     ],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,

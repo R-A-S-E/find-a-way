@@ -9,7 +9,9 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Budget',
-      theme: ThemeData(primarySwatch: AppColors.primaryMaterialColor),
+      theme: ThemeData(
+          inputDecorationTheme: InputDecorationTheme(),
+          primarySwatch: AppColors.primaryMaterialColor),
       initialRoute: AppRoutes.splash,
     ).modular();
   }

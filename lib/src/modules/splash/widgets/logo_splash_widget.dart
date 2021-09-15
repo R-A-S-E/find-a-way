@@ -22,10 +22,11 @@ class LogoSplashWidget extends StatelessWidget {
           ),
         ),
         AnimatedCard(
+          direction: AnimatedCardDirection.bottom,
           child: Container(
             alignment: Alignment.center,
             child: Image.asset(
-              AppImages.logoWhite,
+              AppImages.logo,
               height: 150,
               width: 150,
             ),

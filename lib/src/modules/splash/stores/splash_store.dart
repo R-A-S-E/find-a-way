@@ -11,7 +11,6 @@ abstract class _SplashStore with Store {
   @action
   void setNavigation(String value) => navigation = value;
 
-  @override
   Future<void> init() async {
     await Future.delayed(Duration(seconds: 2));
     setNavigation(AppRoutes.login);
