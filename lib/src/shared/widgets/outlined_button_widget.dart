@@ -1,12 +1,12 @@
-import 'package:curso_list/src/shared/constants/app_gradients.dart';
+import 'package:curso_list/src/shared/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class GradientButton extends StatelessWidget {
+class OutlinedButtonCustom extends StatelessWidget {
   final String text;
   final IconData? prefixIcon;
   final IconData? sufixIcon;
   final Function()? onTap;
-  const GradientButton(
+  const OutlinedButtonCustom(
       {Key? key,
       required this.text,
       this.onTap,
@@ -18,8 +18,11 @@ class GradientButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4.0),
-          gradient: AppGradients.purpleGradient),
+        border: Border.all(color: AppColors.grey),
+        borderRadius: BorderRadius.all(
+          Radius.circular(4),
+        ),
+      ),
       child: Material(
         borderRadius: BorderRadius.circular(4.0),
         color: Colors.transparent,
@@ -31,19 +34,19 @@ class GradientButton extends StatelessWidget {
             children: [
               Icon(
                 prefixIcon,
-                color: Colors.white,
+                color: AppColors.wine,
               ),
               Text(
                 text,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                  color: AppColors.wine,
                 ),
               ),
               Icon(
                 sufixIcon,
-                color: Colors.white,
+                color: AppColors.wine,
               ),
             ],
           ),
