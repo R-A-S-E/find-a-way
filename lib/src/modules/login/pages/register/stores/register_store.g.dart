@@ -24,6 +24,22 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$passwordVisibleAtom =
+      Atom(name: '_RegisterStoreBase.passwordVisible');
+
+  @override
+  bool get passwordVisible {
+    _$passwordVisibleAtom.reportRead();
+    return super.passwordVisible;
+  }
+
+  @override
+  set passwordVisible(bool value) {
+    _$passwordVisibleAtom.reportWrite(value, super.passwordVisible, () {
+      super.passwordVisible = value;
+    });
+  }
+
   final _$_RegisterStoreBaseActionController =
       ActionController(name: '_RegisterStoreBase');
 
@@ -39,9 +55,21 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   }
 
   @override
+  void updatePasswordVisible(bool value) {
+    final _$actionInfo = _$_RegisterStoreBaseActionController.startAction(
+        name: '_RegisterStoreBase.updatePasswordVisible');
+    try {
+      return super.updatePasswordVisible(value);
+    } finally {
+      _$_RegisterStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-currentPage: ${currentPage}
+currentPage: ${currentPage},
+passwordVisible: ${passwordVisible}
     ''';
   }
 }

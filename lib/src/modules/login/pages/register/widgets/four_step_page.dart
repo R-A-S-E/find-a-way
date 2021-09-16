@@ -1,3 +1,4 @@
+import 'package:curso_list/src/modules/login/pages/register/stores/register_store.dart';
 import 'package:curso_list/src/modules/login/pages/register/widgets/step_number_register.dart';
 import 'package:curso_list/src/shared/constants/app_colors.dart';
 import 'package:curso_list/src/shared/constants/app_images.dart';
@@ -6,7 +7,8 @@ import 'package:curso_list/src/shared/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
 class FourStepPage extends StatelessWidget {
-  const FourStepPage({Key? key}) : super(key: key);
+  final RegisterStore store;
+  const FourStepPage({Key? key, required this.store}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +41,26 @@ class FourStepPage extends StatelessWidget {
             SizedBox(height: space),
             StepNumberRegister(step: 4),
             SizedBox(height: space),
-            Column(
-              children: [
-                Container(
-                  height: 45,
-                  decoration: BoxDecoration(
-                      color: AppColors.greyLight,
-                      borderRadius: BorderRadius.circular(14)),
-                  child: CustomTextField(
-                    hintText: 'Digite a área do curso',
+            Form(
+              key: store.formKeyCourses,
+              child: Column(
+                children: [
+                  Container(
+                    height: 45,
+                    decoration: BoxDecoration(
+                        color: AppColors.greyLight,
+                        borderRadius: BorderRadius.circular(14)),
+                    child: CustomTextField(
+                      hintText: 'Digite a área do curso',
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child:
-                      Text('pode adicionar uma sub-área e uma especialidade'),
-                )
-              ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child:
+                        Text('pode adicionar uma sub-área e uma especialidade'),
+                  )
+                ],
+              ),
             )
           ],
         ),

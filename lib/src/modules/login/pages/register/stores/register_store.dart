@@ -11,15 +11,51 @@ abstract class _RegisterStoreBase with Store {
   int currentPage = 0;
 
   @action
-  void updateCurrentPage(int index) {
-    this.currentPage = index;
-  }
+  void updateCurrentPage(int index) => this.currentPage = index;
+
+  @observable
+  bool passwordVisible = true;
+  @action
+  void updatePasswordVisible(bool value) => this.passwordVisible = value;
 
   void pushPage() {
     pageController.jumpToPage(this.currentPage + 1);
   }
 
+  void nextPage() {
+    if (currentPage == 0) {
+      if (formKeyNameAndEmail.currentState!.validate()) {
+        pushPage();
+      }
+    } else if (currentPage == 1) {
+      if (formKeyPhoneAndCpf.currentState!.validate()) {
+        pushPage();
+      }
+    } else if (currentPage == 2) {
+      if (formKeyPassword.currentState!.validate()) {
+        pushPage();
+      }
+    } else if (currentPage == 3) {
+      if (formKeyPassword.currentState!.validate()) {
+        pushPage();
+      }
+    }
+  }
+
   void popPage() {
     pageController.jumpToPage(this.currentPage - 1);
   }
+
+  final formKeyNameAndEmail = GlobalKey<FormState>();
+  final formKeyPhoneAndCpf = GlobalKey<FormState>();
+  final formKeyPassword = GlobalKey<FormState>();
+  final formKeyCourses = GlobalKey<FormState>();
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController cpfController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController courseController = TextEditingController();
 }

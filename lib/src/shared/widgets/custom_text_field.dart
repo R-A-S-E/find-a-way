@@ -74,10 +74,11 @@ class CustomTextField extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         errorStyle: TextStyle(
-          color: AppColors.yellow,
+          color: AppColors.red,
           fontFamily: 'roboto',
           fontSize: 12,
           fontWeight: FontWeight.w400,
+          height: 0.2,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(14)),
@@ -89,6 +90,12 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(14)),
           borderSide: BorderSide(
             color: AppColors.wine,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(
+            color: AppColors.red,
           ),
         ),
         icon: icon,

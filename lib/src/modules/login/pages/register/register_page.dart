@@ -41,7 +41,7 @@ class _RegisterPageState extends ModularState<RegisterPage, RegisterStore> {
               child: GradientButton(
                 text: 'Continuar',
                 sufixIcon: Icons.chevron_right,
-                onTap: () => store.pushPage(),
+                onTap: () => store.nextPage(),
               ),
             ),
           ],
@@ -53,10 +53,10 @@ class _RegisterPageState extends ModularState<RegisterPage, RegisterStore> {
         onPageChanged: store.updateCurrentPage,
         physics: NeverScrollableScrollPhysics(),
         children: [
-          OneStepPage(),
-          TwoStepPage(),
-          ThreeStepPage(),
-          FourStepPage()
+          OneStepPage(store: store),
+          TwoStepPage(store: store),
+          ThreeStepPage(store: store),
+          FourStepPage(store: store)
         ],
       ),
     );
