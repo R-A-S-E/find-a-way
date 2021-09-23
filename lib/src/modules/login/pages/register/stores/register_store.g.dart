@@ -40,6 +40,21 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_RegisterStoreBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$_RegisterStoreBaseActionController =
       ActionController(name: '_RegisterStoreBase');
 
@@ -69,7 +84,8 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
   String toString() {
     return '''
 currentPage: ${currentPage},
-passwordVisible: ${passwordVisible}
+passwordVisible: ${passwordVisible},
+isLoading: ${isLoading}
     ''';
   }
 }

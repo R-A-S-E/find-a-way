@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
-  final String uuid;
+  final String? uuid;
   final String cpf;
   final String name;
   final String phone;
@@ -12,7 +12,7 @@ class UserModel {
   final DateTime? updateAt;
 
   UserModel({
-    required this.uuid,
+    this.uuid,
     required this.cpf,
     required this.name,
     required this.phone,

@@ -1,8 +1,8 @@
 import 'package:curso_list/src/modules/login/pages/register/stores/register_store.dart';
 import 'package:curso_list/src/modules/login/pages/register/widgets/step_number_register.dart';
-import 'package:curso_list/src/shared/constants/app_colors.dart';
 import 'package:curso_list/src/shared/constants/app_images.dart';
 import 'package:curso_list/src/shared/constants/app_text_style.dart';
+import 'package:curso_list/src/shared/validators/text_validator.dart';
 import 'package:curso_list/src/shared/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -47,11 +47,12 @@ class FourStepPage extends StatelessWidget {
                 children: [
                   Container(
                     height: 45,
-                    decoration: BoxDecoration(
-                        color: AppColors.greyLight,
-                        borderRadius: BorderRadius.circular(14)),
                     child: CustomTextField(
-                      hintText: 'Digite a área do curso',
+                      labelText: 'Digite a área do curso',
+                      textInputAction: TextInputAction.next,
+                      controller: store.courseController,
+                      validator: (value) =>
+                          Validators().validateName(value ?? ''),
                     ),
                   ),
                   Padding(
