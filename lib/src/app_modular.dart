@@ -1,3 +1,4 @@
+import 'package:curso_list/src/modules/home/home_module.dart';
 import 'package:curso_list/src/modules/login/login_module.dart';
 import 'package:curso_list/src/modules/splash/splash_module.dart';
 import 'package:curso_list/src/shared/constants/app_routes.dart';
@@ -11,5 +12,6 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ModuleRoute(AppRoutes.splash, module: SplashModule()),
         ModuleRoute(AppRoutes.login, module: LoginModule()),
+        ModuleRoute(AppRoutes.home, module: HomeModule()),
       ];
 }

@@ -9,6 +9,10 @@ class Validators {
     return value.isEmpty ? "Preencha corretamente o nome!" : null;
   }
 
+  String? validatePass(String value) {
+    return value.isEmpty ? "Insira uma senha!" : null;
+  }
+
   String? validateNumber(String value) {
     if (value.isEmpty) {
       return "Preencha corretamente o valor!";

@@ -18,7 +18,6 @@ abstract class _RegisterStoreBase with Store {
 
   @observable
   int currentPage = 0;
-
   @action
   void updateCurrentPage(int index) => this.currentPage = index;
 
@@ -32,6 +31,10 @@ abstract class _RegisterStoreBase with Store {
 
   void pushPage() {
     pageController.jumpToPage(this.currentPage + 1);
+  }
+
+  void popPage() {
+    pageController.jumpToPage(this.currentPage - 1);
   }
 
   void nextPage() {
@@ -62,14 +65,9 @@ abstract class _RegisterStoreBase with Store {
     }
   }
 
-  void popPage() {
-    pageController.jumpToPage(this.currentPage - 1);
-  }
-
   void signUp(
       UserModel userModel, VoidCallback onSuccess, VoidCallback onFail) {
     isLoading = true;
-    // auth.createUserWithEmailAndPassword(email: email, password: pass)
     auth
         .createUserWithEmailAndPassword(
             email: emailController.text, password: passwordController.text)
