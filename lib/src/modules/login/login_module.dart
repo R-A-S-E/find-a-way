@@ -12,7 +12,7 @@ import '../../shared/constants/constants.dart';
 class LoginModule extends Module {
   @override
   List<Bind<Object>> get binds => [
-        Bind.lazySingleton((i) => LoginStore()),
+        Bind.lazySingleton((i) => LoginStore(i())),
         Bind.lazySingleton((i) => FirebaseFirestore.instance),
         Bind.lazySingleton((i) => RegisterRepository(i())),
         Bind.lazySingleton((i) => RegisterStore(i())),

@@ -1,5 +1,6 @@
 import 'package:curso_list/src/modules/login/pages/login/models/login_state.dart';
 import 'package:curso_list/src/shared/constants/app_routes.dart';
+import 'package:curso_list/src/shared/stores/auth_store.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -9,10 +10,14 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStoreBase with _$LoginStore;
 
 abstract class _LoginStoreBase with Store {
+  final AuthStore authStore;
+
+  _LoginStoreBase(this.authStore);
   FirebaseAuth auth = FirebaseAuth.instance;
 
   @observable
   LoginState state = LoginState();
+
   @action
   void setState(LoginState value) => state = value;
 
@@ -41,6 +46,8 @@ abstract class _LoginStoreBase with Store {
   void signIn(String email, String pass, VoidCallback onFail) async {
     isLoading = true;
     auth.signInWithEmailAndPassword(email: email, password: pass).then((user) {
+      print(user.user!.uid);
+      authStore.loginUser(user.user!.uid);
       Modular.to.pushReplacementNamed(AppRoutes.home);
 
       isLoading = false;
