@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:curso_list/src/shared/utils/dates.dart';
 
 class UserModel {
   final String? uuid;
@@ -79,8 +80,8 @@ class UserModel {
       name: map['name'] ?? '',
       phone: map['phone'] ?? '',
       course: map['course'] ?? '',
-      createAt: map['createAt'] ?? '',
-      updateAt: map['updateAt'] ?? '',
+      createAt: Dates.parseTimestampDateTime(map['createAt']),
+      updateAt: Dates.parseTimestampDateTime(map['updateAt']),
     );
   }
 
