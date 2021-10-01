@@ -7,7 +7,7 @@ import '../../shared/constants/constants.dart';
 class SplashModule extends Module {
   @override
   List<Bind<Object>> get binds => [
-        Bind.lazySingleton((i) => SplashStore()),
+        Bind.lazySingleton((i) => SplashStore(i())),
       ];
 
   @override

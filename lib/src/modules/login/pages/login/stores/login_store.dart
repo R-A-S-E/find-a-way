@@ -46,7 +46,6 @@ abstract class _LoginStoreBase with Store {
   void signIn(String email, String pass, VoidCallback onFail) async {
     isLoading = true;
     auth.signInWithEmailAndPassword(email: email, password: pass).then((user) {
-      print(user.user!.uid);
       authStore.loginUser(user.user!.uid);
       Modular.to.pushReplacementNamed(AppRoutes.home);
 
