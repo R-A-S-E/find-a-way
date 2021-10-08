@@ -24,6 +24,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$cursosAtom = Atom(name: '_HomeStoreBase.cursos');
+
+  @override
+  ObservableList<CursosModel> get cursos {
+    _$cursosAtom.reportRead();
+    return super.cursos;
+  }
+
+  @override
+  set cursos(ObservableList<CursosModel> value) {
+    _$cursosAtom.reportWrite(value, super.cursos, () {
+      super.cursos = value;
+    });
+  }
+
   final _$_HomeStoreBaseActionController =
       ActionController(name: '_HomeStoreBase');
 
@@ -39,9 +54,21 @@ mixin _$HomeStore on _HomeStoreBase, Store {
   }
 
   @override
+  void setCursos({List<CursosModel>? values, CursosModel? value}) {
+    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
+        name: '_HomeStoreBase.setCursos');
+    try {
+      return super.setCursos(values: values, value: value);
+    } finally {
+      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+cursos: ${cursos}
     ''';
   }
 }

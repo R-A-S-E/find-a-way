@@ -1,4 +1,6 @@
 import 'package:curso_list/src/modules/home/stores/home_store.dart';
+import 'package:curso_list/src/modules/home/widgets/body_home_page_widget.dart';
+import 'package:curso_list/src/modules/home/widgets/item_card_widget.dart';
 import 'package:curso_list/src/shared/constants/app_gradients.dart';
 import 'package:curso_list/src/shared/widgets/drawer_custom_widget.dart';
 
@@ -44,60 +46,8 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Expanded(
-                  child: Card(
-                    elevation: 3,
-                    child: Column(
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                child: Text('Selecione a categoria:'),
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    height: double.infinity,
-                                    width: 1,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.black12,
-                                        width: 1,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16),
-                                    child: Text('0'),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        Divider(
-                          height: 0,
-                        ),
-                        Expanded(
-                          child: ListView(
-                            children: List.generate(20, (index) {
-                              return ListTile(
-                                title: Text('Area: $index '),
-                                subtitle: Text('Sub-Area: $index'
-                                    '\nEspecialidade: $index'),
-                              );
-                            }),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                BodyHomePageWidget(
+                  cursos: store.cursos,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,

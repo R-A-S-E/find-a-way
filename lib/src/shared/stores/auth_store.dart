@@ -34,6 +34,12 @@ abstract class _AuthStoreBase with Store implements Disposable {
     return userName.isEmpty ? 'Seja bem-vindo!' : 'Olá, $userName';
   }
 
+  @computed
+  List get especialidades {
+    final List especialidade = user!.especialidade;
+    return especialidade;
+  }
+
   bool verifyAuthentication() {
     return firebaseAuth.currentUser != null;
   }

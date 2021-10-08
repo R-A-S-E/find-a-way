@@ -57,6 +57,8 @@ class UserModel {
       'name': name,
       'phone': phone,
       'course': course,
+      'subcategorias': subcategoria,
+      'especialidades': especialidade,
       'createAt': createAt?.millisecondsSinceEpoch,
       'updateAt': updateAt?.millisecondsSinceEpoch,
     };
@@ -69,8 +71,8 @@ class UserModel {
       name: map['name'],
       phone: map['phone'],
       course: map['course'],
-      subcategoria: map['subcategoria'],
-      especialidade: map['especialidade'],
+      subcategoria: map['subcategorias'],
+      especialidade: map['especialidades'],
       createAt: DateTime.fromMillisecondsSinceEpoch(map['createAt']),
       updateAt: DateTime.fromMillisecondsSinceEpoch(map['updateAt']),
     );
@@ -89,9 +91,9 @@ class UserModel {
       cpf: map['cpf'] ?? '',
       name: map['name'] ?? '',
       phone: map['phone'] ?? '',
-      course: map['course'] ?? '',
-      subcategoria: map['subcategoria'] ?? '',
-      especialidade: map['especialidade'] ?? '',
+      course: map['course'] ?? [],
+      subcategoria: map['subcategorias'] ?? [],
+      especialidade: map['especialidades'] ?? [],
       createAt: Dates.parseTimestampDateTime(map['createAt']),
       updateAt: Dates.parseTimestampDateTime(map['updateAt']),
     );
@@ -99,7 +101,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uuid: $uuid, cpf: $cpf, name: $name, phone: $phone, course: $course,subcategoria: $subcategoria, especialidade: $especialidade,   createAt: $createAt, updateAt: $updateAt)';
+    return 'UserModel(uuid: $uuid, cpf: $cpf, name: $name, phone: $phone, course: $course,subcategorias: $subcategoria, especialidades: $especialidade,   createAt: $createAt, updateAt: $updateAt)';
   }
 
   @override
