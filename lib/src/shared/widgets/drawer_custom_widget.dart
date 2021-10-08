@@ -1,17 +1,31 @@
 import 'package:curso_list/src/shared/constants/app_gradients.dart';
 import 'package:curso_list/src/shared/constants/app_text_style.dart';
+import 'package:curso_list/src/shared/stores/auth_store.dart';
 import 'package:curso_list/src/shared/widgets/outlined_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class DrawerCustom extends StatelessWidget {
+class DrawerCustom extends StatefulWidget {
   const DrawerCustom({
     Key? key,
-    required this.welcome,
-    required this.exit,
   }) : super(key: key);
 
-  final String welcome;
-  final Function exit;
+  @override
+  _DrawerCustomState createState() => _DrawerCustomState();
+}
+
+class _DrawerCustomState extends State<DrawerCustom> {
+  late final AuthStore _authStore;
+
+  @override
+  void initState() {
+    _authStore = Modular.get<AuthStore>();
+    super.initState();
+  }
+
+  Future<void> _logoff() async {
+    await _authStore.logoffUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +40,7 @@ class DrawerCustom extends StatelessWidget {
             width: double.infinity,
             child: SafeArea(
                 child: Text(
-              welcome,
+              _authStore.welcomeMessage,
               style: AppTextStyle.white32w700Roboto,
             )),
           ),
@@ -64,9 +78,7 @@ class DrawerCustom extends StatelessWidget {
           Container(
             height: 50,
             child: OutlinedButtonCustom(
-              text: 'Sair',
-              onTap: () => exit,
-            ),
+                text: 'Sair', onTap: () async => await _logoff()),
           )
         ],
       ),

@@ -8,7 +8,9 @@ class UserModel {
   final String cpf;
   final String name;
   final String phone;
-  final String course;
+  final List course;
+  final List subcategoria;
+  final List especialidade;
   final DateTime? createAt;
   final DateTime? updateAt;
 
@@ -18,6 +20,8 @@ class UserModel {
     required this.name,
     required this.phone,
     required this.course,
+    required this.subcategoria,
+    required this.especialidade,
     this.createAt,
     this.updateAt,
   });
@@ -27,7 +31,9 @@ class UserModel {
     String? cpf,
     String? name,
     String? phone,
-    String? course,
+    List? course,
+    List? subcategoria,
+    List? especialidade,
     DateTime? createAt,
     DateTime? updateAt,
   }) {
@@ -37,6 +43,8 @@ class UserModel {
       name: name ?? this.name,
       phone: phone ?? this.phone,
       course: course ?? this.course,
+      subcategoria: subcategoria ?? this.subcategoria,
+      especialidade: especialidade ?? this.especialidade,
       createAt: createAt ?? this.createAt,
       updateAt: updateAt ?? this.updateAt,
     );
@@ -61,6 +69,8 @@ class UserModel {
       name: map['name'],
       phone: map['phone'],
       course: map['course'],
+      subcategoria: map['subcategoria'],
+      especialidade: map['especialidade'],
       createAt: DateTime.fromMillisecondsSinceEpoch(map['createAt']),
       updateAt: DateTime.fromMillisecondsSinceEpoch(map['updateAt']),
     );
@@ -80,6 +90,8 @@ class UserModel {
       name: map['name'] ?? '',
       phone: map['phone'] ?? '',
       course: map['course'] ?? '',
+      subcategoria: map['subcategoria'] ?? '',
+      especialidade: map['especialidade'] ?? '',
       createAt: Dates.parseTimestampDateTime(map['createAt']),
       updateAt: Dates.parseTimestampDateTime(map['updateAt']),
     );
@@ -87,7 +99,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uuid: $uuid, cpf: $cpf, name: $name, phone: $phone, course: $course, createAt: $createAt, updateAt: $updateAt)';
+    return 'UserModel(uuid: $uuid, cpf: $cpf, name: $name, phone: $phone, course: $course,subcategoria: $subcategoria, especialidade: $especialidade,   createAt: $createAt, updateAt: $updateAt)';
   }
 
   @override
@@ -100,6 +112,8 @@ class UserModel {
         other.name == name &&
         other.phone == phone &&
         other.course == course &&
+        other.subcategoria == subcategoria &&
+        other.especialidade == especialidade &&
         other.createAt == createAt &&
         other.updateAt == updateAt;
   }
@@ -111,6 +125,8 @@ class UserModel {
         name.hashCode ^
         phone.hashCode ^
         course.hashCode ^
+        subcategoria.hashCode ^
+        especialidade.hashCode ^
         createAt.hashCode ^
         updateAt.hashCode;
   }

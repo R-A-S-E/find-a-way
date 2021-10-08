@@ -31,7 +31,7 @@ abstract class _AuthStoreBase with Store implements Disposable {
   @computed
   String get welcomeMessage {
     final String userName = user?.name ?? '';
-    return userName.isEmpty ? 'Seja bem-vindo!' : 'Olá, ${userName}';
+    return userName.isEmpty ? 'Seja bem-vindo!' : 'Olá, $userName';
   }
 
   bool verifyAuthentication() {

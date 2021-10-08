@@ -29,6 +29,10 @@ abstract class _RegisterStoreBase with Store {
   @observable
   bool isLoading = false;
 
+  List cursos = [];
+  List subcategoria = [];
+  List especialidade = [];
+
   void pushPage() {
     pageController.jumpToPage(this.currentPage + 1);
   }
@@ -52,13 +56,15 @@ abstract class _RegisterStoreBase with Store {
       }
     } else if (currentPage == 3) {
       if (formKeyCourses.currentState!.validate()) {
+        cursos.add(courseController.text);
         signUp(
             UserModel(
-              cpf: cpfController.text,
-              name: nameController.text,
-              phone: phoneController.text,
-              course: courseController.text,
-            ),
+                cpf: cpfController.text,
+                name: nameController.text,
+                phone: phoneController.text,
+                course: cursos,
+                subcategoria: subcategoria,
+                especialidade: especialidade),
             () {},
             () {});
       }

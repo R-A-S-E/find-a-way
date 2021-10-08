@@ -1,8 +1,6 @@
 import 'package:curso_list/src/modules/home/stores/home_store.dart';
 import 'package:curso_list/src/shared/constants/app_gradients.dart';
-import 'package:curso_list/src/shared/constants/app_text_style.dart';
 import 'package:curso_list/src/shared/widgets/drawer_custom_widget.dart';
-import 'package:curso_list/src/shared/widgets/outlined_button_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -31,14 +29,11 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         }),
         centerTitle: true,
         flexibleSpace: Container(
-          height: 400,
+          height: 200,
           decoration: BoxDecoration(gradient: AppGradients.purpleGradient),
         ),
       ),
-      drawer: DrawerCustom(
-        welcome: store.authStore.welcomeMessage,
-        exit: () {},
-      ),
+      drawer: DrawerCustom(),
       body: Observer(builder: (_) {
         if (store.isLoading == true)
           return Center(
@@ -93,7 +88,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                           child: ListView(
                             children: List.generate(20, (index) {
                               return ListTile(
-                                title: Text('Curso $index '),
+                                title: Text('Area: $index '),
+                                subtitle: Text('Sub-Area: $index'
+                                    '\nEspecialidade: $index'),
                               );
                             }),
                           ),
