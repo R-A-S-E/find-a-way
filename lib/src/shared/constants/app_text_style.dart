@@ -23,6 +23,13 @@ class AppTextStyle {
     fontFamily: "Roboto",
     letterSpacing: 0.25,
   );
+  static const TextStyle white14w400Roboto = TextStyle(
+    color: AppColors.white,
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    fontFamily: "Roboto",
+    letterSpacing: 0.25,
+  );
   static const TextStyle black16w700Roboto = TextStyle(
     color: AppColors.black,
     fontWeight: FontWeight.w700,

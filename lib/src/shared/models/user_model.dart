@@ -8,9 +8,7 @@ class UserModel {
   final String cpf;
   final String name;
   final String phone;
-  final List course;
-  final List subcategoria;
-  final List especialidade;
+  final List specialty;
   final DateTime? createAt;
   final DateTime? updateAt;
 
@@ -19,9 +17,7 @@ class UserModel {
     required this.cpf,
     required this.name,
     required this.phone,
-    required this.course,
-    required this.subcategoria,
-    required this.especialidade,
+    required this.specialty,
     this.createAt,
     this.updateAt,
   });
@@ -31,9 +27,7 @@ class UserModel {
     String? cpf,
     String? name,
     String? phone,
-    List? course,
-    List? subcategoria,
-    List? especialidade,
+    List? specialty,
     DateTime? createAt,
     DateTime? updateAt,
   }) {
@@ -42,9 +36,7 @@ class UserModel {
       cpf: cpf ?? this.cpf,
       name: name ?? this.name,
       phone: phone ?? this.phone,
-      course: course ?? this.course,
-      subcategoria: subcategoria ?? this.subcategoria,
-      especialidade: especialidade ?? this.especialidade,
+      specialty: specialty ?? this.specialty,
       createAt: createAt ?? this.createAt,
       updateAt: updateAt ?? this.updateAt,
     );
@@ -56,9 +48,7 @@ class UserModel {
       'cpf': cpf,
       'name': name,
       'phone': phone,
-      'course': course,
-      'subcategorias': subcategoria,
-      'especialidades': especialidade,
+      'specialty': specialty,
       'createAt': createAt?.millisecondsSinceEpoch,
       'updateAt': updateAt?.millisecondsSinceEpoch,
     };
@@ -70,9 +60,7 @@ class UserModel {
       cpf: map['cpf'],
       name: map['name'],
       phone: map['phone'],
-      course: map['course'],
-      subcategoria: map['subcategorias'],
-      especialidade: map['especialidades'],
+      specialty: map['specialty'],
       createAt: DateTime.fromMillisecondsSinceEpoch(map['createAt']),
       updateAt: DateTime.fromMillisecondsSinceEpoch(map['updateAt']),
     );
@@ -91,9 +79,7 @@ class UserModel {
       cpf: map['cpf'] ?? '',
       name: map['name'] ?? '',
       phone: map['phone'] ?? '',
-      course: map['course'] ?? [],
-      subcategoria: map['subcategorias'] ?? [],
-      especialidade: map['especialidades'] ?? [],
+      specialty: map['specialty'] ?? [],
       createAt: Dates.parseTimestampDateTime(map['createAt']),
       updateAt: Dates.parseTimestampDateTime(map['updateAt']),
     );
@@ -101,7 +87,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uuid: $uuid, cpf: $cpf, name: $name, phone: $phone, course: $course,subcategorias: $subcategoria, especialidades: $especialidade,   createAt: $createAt, updateAt: $updateAt)';
+    return 'UserModel(uuid: $uuid, cpf: $cpf, name: $name, phone: $phone, specialty: $specialty,   createAt: $createAt, updateAt: $updateAt)';
   }
 
   @override
@@ -113,9 +99,7 @@ class UserModel {
         other.cpf == cpf &&
         other.name == name &&
         other.phone == phone &&
-        other.course == course &&
-        other.subcategoria == subcategoria &&
-        other.especialidade == especialidade &&
+        other.specialty == specialty &&
         other.createAt == createAt &&
         other.updateAt == updateAt;
   }
@@ -126,9 +110,7 @@ class UserModel {
         cpf.hashCode ^
         name.hashCode ^
         phone.hashCode ^
-        course.hashCode ^
-        subcategoria.hashCode ^
-        especialidade.hashCode ^
+        specialty.hashCode ^
         createAt.hashCode ^
         updateAt.hashCode;
   }

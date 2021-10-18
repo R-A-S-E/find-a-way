@@ -3,10 +3,10 @@ import 'package:curso_list/src/shared/models/cursos_model.dart';
 import 'package:flutter/material.dart';
 
 class BodyHomePageWidget extends StatelessWidget {
-  final List<CursosModel> cursos;
+  final List<CoursesModel> specialty;
   const BodyHomePageWidget({
     Key? key,
-    required this.cursos,
+    required this.specialty,
   }) : super(key: key);
 
   @override
@@ -39,7 +39,7 @@ class BodyHomePageWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('0'),
+                        child: Text('${specialty.length}'),
                       ),
                     ],
                   )
@@ -51,9 +51,10 @@ class BodyHomePageWidget extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: cursos
-                    .map((cursos) => ItemCardWidget(
-                          cursos: cursos,
+                children: specialty
+                    .map((specialty) => ItemCardWidget(
+                          onTap: () => specialty,
+                          specialty: specialty,
                         ))
                     .toList(),
               ),

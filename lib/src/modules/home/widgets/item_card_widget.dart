@@ -1,17 +1,50 @@
+import 'package:curso_list/src/shared/constants/app_colors.dart';
+import 'package:curso_list/src/shared/constants/app_text_style.dart';
 import 'package:curso_list/src/shared/models/cursos_model.dart';
 import 'package:flutter/material.dart';
 
 class ItemCardWidget extends StatelessWidget {
-  final CursosModel cursos;
+  final CoursesModel specialty;
+  final void Function()? onTap;
 
-  const ItemCardWidget({Key? key, required this.cursos}) : super(key: key);
+  const ItemCardWidget({Key? key, required this.specialty, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text('Area: ${cursos.course}'),
-      subtitle: Text('Sub-Area: ${cursos.subcategoria}'
-          '\nEspecialidade: ${cursos.especialidade}'),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: AppColors.wine),
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
+        child: ListTile(
+          onTap: onTap,
+          title: Text(
+            'Area: ${specialty.category}',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
+          subtitle: Text(
+            'Sub-Area: ${specialty.subcategory}',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
+          trailing: Container(
+            height: double.infinity,
+            width: 60,
+            decoration: BoxDecoration(
+              color: AppColors.wine,
+            ),
+            child: Center(
+                child: Text(specialty.specialty,
+                    overflow: TextOverflow.visible,
+                    maxLines: 1,
+                    style: AppTextStyle.white14w400Roboto)),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:curso_list/src/modules/home/pages/home_page.dart';
-import 'package:curso_list/src/modules/home/repositories/cursos_repository_impl.dart';
+import 'package:curso_list/src/modules/home/repositories/courses_repository_impl.dart';
 import 'package:curso_list/src/modules/home/stores/home_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,7 +9,7 @@ class HomeModule extends Module {
   @override
   List<Bind<Object>> get binds => [
         Bind.lazySingleton((i) => HomeStore(i(), i())),
-        Bind.singleton((i) => CursosRepositoryImpl(i(), i())),
+        Bind.singleton((i) => CoursesRepositoryImpl(i(), i())),
       ];
 
   @override

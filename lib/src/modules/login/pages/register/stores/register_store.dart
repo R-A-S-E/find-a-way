@@ -62,9 +62,7 @@ abstract class _RegisterStoreBase with Store {
                 cpf: cpfController.text,
                 name: nameController.text,
                 phone: phoneController.text,
-                course: cursos,
-                subcategoria: subcategoria,
-                especialidade: especialidade),
+                specialty: especialidade),
             () {},
             () {});
       }

@@ -16,13 +16,13 @@ mixin _$AuthStore on _AuthStoreBase, Store {
       (_$welcomeMessageComputed ??= Computed<String>(() => super.welcomeMessage,
               name: '_AuthStoreBase.welcomeMessage'))
           .value;
-  Computed<List<dynamic>>? _$especialidadesComputed;
+  Computed<List<dynamic>>? _$specialtyComputed;
 
   @override
-  List<dynamic> get especialidades => (_$especialidadesComputed ??=
-          Computed<List<dynamic>>(() => super.especialidades,
-              name: '_AuthStoreBase.especialidades'))
-      .value;
+  List<dynamic> get specialty =>
+      (_$specialtyComputed ??= Computed<List<dynamic>>(() => super.specialty,
+              name: '_AuthStoreBase.specialty'))
+          .value;
 
   final _$userAtom = Atom(name: '_AuthStoreBase.user');
 
@@ -58,7 +58,7 @@ mixin _$AuthStore on _AuthStoreBase, Store {
     return '''
 user: ${user},
 welcomeMessage: ${welcomeMessage},
-especialidades: ${especialidades}
+specialty: ${specialty}
     ''';
   }
 }

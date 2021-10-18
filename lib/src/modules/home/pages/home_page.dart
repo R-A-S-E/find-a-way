@@ -1,6 +1,5 @@
 import 'package:curso_list/src/modules/home/stores/home_store.dart';
 import 'package:curso_list/src/modules/home/widgets/body_home_page_widget.dart';
-import 'package:curso_list/src/modules/home/widgets/item_card_widget.dart';
 import 'package:curso_list/src/shared/constants/app_gradients.dart';
 import 'package:curso_list/src/shared/widgets/drawer_custom_widget.dart';
 
@@ -47,7 +46,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             child: Column(
               children: [
                 BodyHomePageWidget(
-                  cursos: store.cursos,
+                  specialty: store.courses,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,

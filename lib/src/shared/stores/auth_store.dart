@@ -35,9 +35,9 @@ abstract class _AuthStoreBase with Store implements Disposable {
   }
 
   @computed
-  List get especialidades {
-    final List especialidade = user!.especialidade;
-    return especialidade;
+  List get specialty {
+    final List specialty = user!.specialty;
+    return specialty;
   }
 
   bool verifyAuthentication() {

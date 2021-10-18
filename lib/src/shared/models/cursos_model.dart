@@ -2,77 +2,77 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CursosModel {
-  final String course;
-  final String subcategoria;
-  final String especialidade;
+class CoursesModel {
+  final String category;
+  final String subcategory;
+  final String specialty;
 
-  CursosModel({
-    required this.course,
-    required this.subcategoria,
-    required this.especialidade,
+  CoursesModel({
+    required this.category,
+    required this.subcategory,
+    required this.specialty,
   });
 
-  CursosModel copyWith({
-    String? course,
-    String? subcategoria,
-    String? especialidade,
+  CoursesModel copyWith({
+    String? category,
+    String? subcategory,
+    String? specialty,
   }) {
-    return CursosModel(
-      course: course ?? this.course,
-      subcategoria: subcategoria ?? this.subcategoria,
-      especialidade: especialidade ?? this.especialidade,
+    return CoursesModel(
+      category: category ?? this.category,
+      subcategory: subcategory ?? this.subcategory,
+      specialty: specialty ?? this.specialty,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'course': course,
-      'subcategoria': subcategoria,
-      'especialidade': especialidade
+      'category': category,
+      'subcategory': subcategory,
+      'specialty': specialty
     };
   }
 
-  factory CursosModel.fromMap(Map<String, dynamic> map) {
-    return CursosModel(
-      course: map['course'],
-      subcategoria: map['subcategoria'],
-      especialidade: map['especialidade'],
+  factory CoursesModel.fromMap(Map<String, dynamic> map) {
+    return CoursesModel(
+      category: map['category'],
+      subcategory: map['subcategory'],
+      specialty: map['specialty'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CursosModel.fromJson(String source) =>
-      CursosModel.fromMap(json.decode(source));
+  factory CoursesModel.fromJson(String source) =>
+      CoursesModel.fromMap(json.decode(source));
 
-  factory CursosModel.fromFirestore(DocumentSnapshot? doc) {
+  factory CoursesModel.fromFirestore(DocumentSnapshot? doc) {
     Map map = (doc == null) ? {} : doc.data() as Map<String, dynamic>;
 
-    return CursosModel(
-      course: map['course'] ?? '',
-      subcategoria: map['subcategoria'] ?? '',
-      especialidade: map['especialidade'] ?? '',
+    return CoursesModel(
+      category: map['category'] ?? '',
+      subcategory: map['subcategory'] ?? '',
+      specialty: map['specialty'] ?? '',
     );
   }
 
   @override
   String toString() {
-    return 'CursosModel(course: $course, subcategoria: $subcategoria, especialidade: $especialidade)';
+    return 'CoursesModel(category: $category, subcategory: $subcategory, specialty: $specialty)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CursosModel &&
-        other.course == course &&
-        other.subcategoria == subcategoria &&
-        other.especialidade == especialidade;
+    return other is CoursesModel &&
+        other.category == category &&
+        other.subcategory == subcategory &&
+        other.specialty == specialty;
   }
 
   @override
   int get hashCode {
-    return course.hashCode ^ subcategoria.hashCode ^ especialidade.hashCode;
+    return category.hashCode ^ subcategory.hashCode ^ specialty.hashCode;
   }
 }
