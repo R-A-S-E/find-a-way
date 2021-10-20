@@ -1,6 +1,8 @@
 import 'package:curso_list/src/modules/home/widgets/item_card_widget.dart';
+import 'package:curso_list/src/shared/constants/app_routes.dart';
 import 'package:curso_list/src/shared/models/cursos_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class BodyHomePageWidget extends StatelessWidget {
   final List<CoursesModel> specialty;
@@ -53,7 +55,8 @@ class BodyHomePageWidget extends StatelessWidget {
               child: ListView(
                 children: specialty
                     .map((specialty) => ItemCardWidget(
-                          onTap: () => specialty,
+                          onTap: () => Modular.to.pushNamed(AppRoutes.course,
+                              arguments: specialty),
                           specialty: specialty,
                         ))
                     .toList(),
