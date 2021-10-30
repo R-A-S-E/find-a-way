@@ -1,6 +1,5 @@
-import 'package:curso_list/src/shared/constants/app_collections.dart';
+import 'package:curso_list/src/modules/course/repositories/course_repository.dart';
 import 'package:curso_list/src/shared/models/specialty_model.dart';
-import 'package:curso_list/src/shared/repositories/way/way_repository.dart';
 import 'package:curso_list/src/shared/stores/auth_store.dart';
 import 'package:mobx/mobx.dart';
 part 'course_store.g.dart';
@@ -10,7 +9,7 @@ class CourseStore = _CourseStoreBase with _$CourseStore;
 abstract class _CourseStoreBase with Store {
 
 late final AuthStore authStore;
-  final WayRepository repository;
+  final CourseRepository repository;
 
   _CourseStoreBase(
     this.authStore, this.repository
@@ -46,8 +45,8 @@ late final AuthStore authStore;
 
   Future<void> handleGetTransaction() async {
     setIsLoading(true);
-    final course = await repository.getAllCursos(
-      collections: AppCollections.courses
+    final course = await repository.getAllCursos(specialty: 'flutter'
+
     );
     setCourses(values: course);
     await Future.delayed(Duration(seconds: 1));
