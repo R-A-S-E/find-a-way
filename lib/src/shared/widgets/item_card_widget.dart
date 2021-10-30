@@ -1,10 +1,10 @@
 import 'package:curso_list/src/shared/constants/app_colors.dart';
 import 'package:curso_list/src/shared/constants/app_text_style.dart';
-import 'package:curso_list/src/shared/models/cursos_model.dart';
+import 'package:curso_list/src/shared/models/specialty_model.dart';
 import 'package:flutter/material.dart';
 
 class ItemCardWidget extends StatelessWidget {
-  final CoursesModel specialty;
+  final SpecialtyModel specialty;
   final void Function()? onTap;
 
   const ItemCardWidget({Key? key, required this.specialty, this.onTap})

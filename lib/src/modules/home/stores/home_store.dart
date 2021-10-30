@@ -1,5 +1,6 @@
-import 'package:curso_list/src/modules/home/repositories/courses_repository.dart';
-import 'package:curso_list/src/shared/models/cursos_model.dart';
+import 'package:curso_list/src/shared/constants/app_collections.dart';
+import 'package:curso_list/src/shared/models/specialty_model.dart';
+import 'package:curso_list/src/shared/repositories/way/way_repository.dart';
 import 'package:curso_list/src/shared/stores/auth_store.dart';
 import 'package:mobx/mobx.dart';
 part 'home_store.g.dart';
@@ -8,7 +9,7 @@ class HomeStore = _HomeStoreBase with _$HomeStore;
 
 abstract class _HomeStoreBase with Store {
   late final AuthStore authStore;
-  final CoursesRepository repository;
+  final WayRepository repository;
 
   _HomeStoreBase(this.authStore, this.repository);
 
@@ -22,9 +23,9 @@ abstract class _HomeStoreBase with Store {
   void setIsLoading(bool value) => isLoading = value;
 
   @observable
-  ObservableList<CoursesModel> courses = ObservableList<CoursesModel>();
+  ObservableList<SpecialtyModel> courses = ObservableList<SpecialtyModel>();
   @action
-  void setCourses({List<CoursesModel>? values, CoursesModel? value}) {
+  void setCourses({List<SpecialtyModel>? values, SpecialtyModel? value}) {
     if (values != null) {
       courses.clear();
       courses.addAll(values);
@@ -42,7 +43,7 @@ abstract class _HomeStoreBase with Store {
 
   Future<void> handleGetTransaction() async {
     setIsLoading(true);
-    final course = await repository.getAllCursos();
+    final course = await repository.getAllCursos(collections: AppCollections.specialty,specialty: authStore.specialty);
     setCourses(values: course);
     await Future.delayed(Duration(seconds: 1));
     setIsLoading(false);

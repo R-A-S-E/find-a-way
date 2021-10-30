@@ -1,12 +1,13 @@
-import 'package:curso_list/src/modules/home/widgets/item_card_widget.dart';
 import 'package:curso_list/src/shared/constants/app_routes.dart';
-import 'package:curso_list/src/shared/models/cursos_model.dart';
+import 'package:curso_list/src/shared/models/specialty_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class BodyHomePageWidget extends StatelessWidget {
-  final List<CoursesModel> specialty;
-  const BodyHomePageWidget({
+import 'item_card_widget.dart';
+
+class BodyPageWidget extends StatelessWidget {
+  final List<SpecialtyModel> specialty;
+  const BodyPageWidget({
     Key? key,
     required this.specialty,
   }) : super(key: key);

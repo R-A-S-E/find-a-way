@@ -1,8 +1,7 @@
 import 'package:curso_list/src/modules/home/stores/home_store.dart';
-import 'package:curso_list/src/modules/home/widgets/body_home_page_widget.dart';
 import 'package:curso_list/src/shared/constants/app_gradients.dart';
+import 'package:curso_list/src/shared/widgets/body_page_widget.dart';
 import 'package:curso_list/src/shared/widgets/drawer_custom_widget.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -45,7 +44,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                BodyHomePageWidget(
+                BodyPageWidget(
                   specialty: store.courses,
                 ),
                 SizedBox(

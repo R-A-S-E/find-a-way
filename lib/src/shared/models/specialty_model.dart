@@ -2,23 +2,23 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CoursesModel {
+class SpecialtyModel {
   final String category;
   final String subcategory;
   final String specialty;
 
-  CoursesModel({
+  SpecialtyModel({
     required this.category,
     required this.subcategory,
     required this.specialty,
   });
 
-  CoursesModel copyWith({
+  SpecialtyModel copyWith({
     String? category,
     String? subcategory,
     String? specialty,
   }) {
-    return CoursesModel(
+    return SpecialtyModel(
       category: category ?? this.category,
       subcategory: subcategory ?? this.subcategory,
       specialty: specialty ?? this.specialty,
@@ -33,8 +33,8 @@ class CoursesModel {
     };
   }
 
-  factory CoursesModel.fromMap(Map<String, dynamic> map) {
-    return CoursesModel(
+  factory SpecialtyModel.fromMap(Map<String, dynamic> map) {
+    return SpecialtyModel(
       category: map['category'],
       subcategory: map['subcategory'],
       specialty: map['specialty'],
@@ -43,13 +43,13 @@ class CoursesModel {
 
   String toJson() => json.encode(toMap());
 
-  factory CoursesModel.fromJson(String source) =>
-      CoursesModel.fromMap(json.decode(source));
+  factory SpecialtyModel.fromJson(String source) =>
+      SpecialtyModel.fromMap(json.decode(source));
 
-  factory CoursesModel.fromFirestore(DocumentSnapshot? doc) {
+  factory SpecialtyModel.fromFirestore(DocumentSnapshot? doc) {
     Map map = (doc == null) ? {} : doc.data() as Map<String, dynamic>;
 
-    return CoursesModel(
+    return SpecialtyModel(
       category: map['category'] ?? '',
       subcategory: map['subcategory'] ?? '',
       specialty: map['specialty'] ?? '',
@@ -58,14 +58,14 @@ class CoursesModel {
 
   @override
   String toString() {
-    return 'CoursesModel(category: $category, subcategory: $subcategory, specialty: $specialty)';
+    return 'SpecialtyModel(category: $category, subcategory: $subcategory, specialty: $specialty)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CoursesModel &&
+    return other is SpecialtyModel &&
         other.category == category &&
         other.subcategory == subcategory &&
         other.specialty == specialty;

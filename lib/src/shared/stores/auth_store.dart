@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:curso_list/src/shared/constants/app_routes.dart';
 import 'package:curso_list/src/shared/models/user_model.dart';
-import 'package:curso_list/src/shared/repositories/auth_repository.dart';
+import 'package:curso_list/src/shared/repositories/auth/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
