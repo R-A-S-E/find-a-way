@@ -1,5 +1,5 @@
 import 'package:curso_list/src/modules/course/repositories/course_repository.dart';
-import 'package:curso_list/src/shared/models/specialty_model.dart';
+import 'package:curso_list/src/shared/models/course_model.dart';
 import 'package:curso_list/src/shared/stores/auth_store.dart';
 import 'package:mobx/mobx.dart';
 part 'course_store.g.dart';
@@ -25,9 +25,9 @@ late final AuthStore authStore;
   void setIsLoading(bool value) => isLoading = value;
 
   @observable
-  ObservableList<SpecialtyModel> courses = ObservableList<SpecialtyModel>();
+  ObservableList<CourseModel> courses = ObservableList<CourseModel>();
   @action
-  void setCourses({List<SpecialtyModel>? values, SpecialtyModel? value}) {
+  void setCourses({List<CourseModel>? values, CourseModel? value}) {
     if (values != null) {
       courses.clear();
       courses.addAll(values);
@@ -45,9 +45,7 @@ late final AuthStore authStore;
 
   Future<void> handleGetTransaction() async {
     setIsLoading(true);
-    final course = await repository.getAllCursos(specialty: 'flutter'
-
-    );
+    final course = await repository.getAllCursos(specialty: 'flutter');
     setCourses(values: course);
     await Future.delayed(Duration(seconds: 1));
     setIsLoading(false);

@@ -27,13 +27,13 @@ mixin _$CourseStore on _CourseStoreBase, Store {
   final _$coursesAtom = Atom(name: '_CourseStoreBase.courses');
 
   @override
-  ObservableList<SpecialtyModel> get courses {
+  ObservableList<CourseModel> get courses {
     _$coursesAtom.reportRead();
     return super.courses;
   }
 
   @override
-  set courses(ObservableList<SpecialtyModel> value) {
+  set courses(ObservableList<CourseModel> value) {
     _$coursesAtom.reportWrite(value, super.courses, () {
       super.courses = value;
     });
@@ -54,7 +54,7 @@ mixin _$CourseStore on _CourseStoreBase, Store {
   }
 
   @override
-  void setCourses({List<SpecialtyModel>? values, SpecialtyModel? value}) {
+  void setCourses({List<CourseModel>? values, CourseModel? value}) {
     final _$actionInfo = _$_CourseStoreBaseActionController.startAction(
         name: '_CourseStoreBase.setCourses');
     try {

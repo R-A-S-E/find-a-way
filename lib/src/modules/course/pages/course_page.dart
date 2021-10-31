@@ -1,6 +1,7 @@
 import 'package:curso_list/src/modules/course/stores/course_store.dart';
+import 'package:curso_list/src/modules/course/widgets/body_course_page_widget.dart';
 import 'package:curso_list/src/shared/constants/app_gradients.dart';
-import 'package:curso_list/src/shared/widgets/body_page_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -44,8 +45,8 @@ class _CoursePageState extends ModularState<CoursePage, CourseStore> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                BodyPageWidget(
-                  specialty: store.courses,
+                BodyCoursePageWidget(
+                  course: store.courses,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,

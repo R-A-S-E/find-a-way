@@ -1,5 +1,5 @@
-import 'package:curso_list/src/shared/models/specialty_model.dart';
+import 'package:curso_list/src/shared/models/course_model.dart';
 
 abstract class CourseRepository {
-  Future<List<SpecialtyModel>> getAllCursos({required String specialty});
+  Future<List<CourseModel>> getAllCursos({required String specialty});
 }

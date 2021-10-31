@@ -1,15 +1,15 @@
 import 'package:curso_list/src/shared/constants/app_routes.dart';
-import 'package:curso_list/src/shared/models/specialty_model.dart';
+import 'package:curso_list/src/shared/models/course_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'item_card_widget.dart';
 
-class BodyPageWidget extends StatelessWidget {
-  final List<SpecialtyModel> specialty;
-  const BodyPageWidget({
+class BodyCoursePageWidget extends StatelessWidget {
+  final List<CourseModel> course;
+  const BodyCoursePageWidget({
     Key? key,
-    required this.specialty,
+    required this.course,
   }) : super(key: key);
 
   @override
@@ -42,7 +42,7 @@ class BodyPageWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('${specialty.length}'),
+                        child: Text('${course.length}'),
                       ),
                     ],
                   )
@@ -54,11 +54,11 @@ class BodyPageWidget extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                children: specialty
-                    .map((specialty) => ItemCardWidget(
+                children: course
+                    .map((course) => ItemCardCourseWidget(
                           onTap: () => Modular.to.pushNamed(AppRoutes.course,
-                              arguments: specialty),
-                          specialty: specialty,
+                              arguments: course),
+                          course: course,
                         ))
                     .toList(),
               ),

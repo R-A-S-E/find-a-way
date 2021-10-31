@@ -1,13 +1,13 @@
 import 'package:curso_list/src/shared/constants/app_colors.dart';
 import 'package:curso_list/src/shared/constants/app_text_style.dart';
-import 'package:curso_list/src/shared/models/specialty_model.dart';
+import 'package:curso_list/src/shared/models/course_model.dart';
 import 'package:flutter/material.dart';
 
-class ItemCardWidget extends StatelessWidget {
-  final SpecialtyModel specialty;
+class ItemCardCourseWidget extends StatelessWidget {
+  final CourseModel course;
   final void Function()? onTap;
 
-  const ItemCardWidget({Key? key, required this.specialty, this.onTap})
+  const ItemCardCourseWidget({Key? key, required this.course, this.onTap})
       : super(key: key);
 
   @override
@@ -22,12 +22,12 @@ class ItemCardWidget extends StatelessWidget {
         child: ListTile(
           onTap: onTap,
           title: Text(
-            'Area: ${specialty.category}',
+            'Area: ${course.title}',
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
           subtitle: Text(
-            'Sub-Area: ${specialty.subcategory}',
+            'Sub-Area: ${course.description}',
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
@@ -38,7 +38,7 @@ class ItemCardWidget extends StatelessWidget {
               color: AppColors.wine,
             ),
             child: Center(
-                child: Text(specialty.specialty,
+                child: Text(course.hours.toString(),
                     overflow: TextOverflow.visible,
                     maxLines: 1,
                     style: AppTextStyle.white14w400Roboto)),
