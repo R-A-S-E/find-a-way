@@ -7,7 +7,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class CoursePage extends StatefulWidget {
-  const CoursePage({Key? key}) : super(key: key);
+  final String specialty;
+  const CoursePage({Key? key, required this.specialty}) : super(key: key);
 
   @override
   _CoursePageState createState() => _CoursePageState();
@@ -18,6 +19,7 @@ class _CoursePageState extends ModularState<CoursePage, CourseStore> {
   @override
   void initState() {
     super.initState();
+    store.specialty = widget.specialty;
     store.init();
   }
   

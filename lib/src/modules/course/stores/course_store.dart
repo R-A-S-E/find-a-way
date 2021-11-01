@@ -8,8 +8,9 @@ class CourseStore = _CourseStoreBase with _$CourseStore;
 
 abstract class _CourseStoreBase with Store {
 
-late final AuthStore authStore;
+  late final AuthStore authStore;
   final CourseRepository repository;
+  
 
   _CourseStoreBase(
     this.authStore, this.repository
@@ -18,6 +19,8 @@ late final AuthStore authStore;
   Future<void> init() async {
     await handleGetTransaction();
   }
+
+  String? specialty;
 
   @observable
   bool isLoading = false;
@@ -45,7 +48,7 @@ late final AuthStore authStore;
 
   Future<void> handleGetTransaction() async {
     setIsLoading(true);
-    final course = await repository.getAllCursos(specialty: 'flutter');
+    final course = await repository.getAllCursos(specialty: specialty!);
     setCourses(values: course);
     await Future.delayed(Duration(seconds: 1));
     setIsLoading(false);

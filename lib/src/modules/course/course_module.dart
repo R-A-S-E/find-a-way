@@ -14,6 +14,6 @@ class CourseModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute(AppRoutes.initial, child: (_, args) => CoursePage()),
+        ChildRoute(AppRoutes.initial, child: (_, args) => CoursePage(specialty: args.data,)),
       ];
 }

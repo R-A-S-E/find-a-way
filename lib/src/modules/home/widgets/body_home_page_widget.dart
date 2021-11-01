@@ -57,7 +57,7 @@ class BodyHomePageWidget extends StatelessWidget {
                 children: specialty
                     .map((specialty) => ItemCardHomeWidget(
                           onTap: () => Modular.to.pushNamed(AppRoutes.course,
-                              arguments: specialty),
+                              arguments: specialty.specialty),
                           specialty: specialty,
                         ))
                     .toList(),
