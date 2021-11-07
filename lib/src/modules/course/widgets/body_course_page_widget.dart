@@ -1,9 +1,9 @@
-import 'package:curso_list/src/shared/constants/app_routes.dart';
+import 'package:curso_list/src/shared/constants/app_text_style.dart';
 import 'package:curso_list/src/shared/models/course_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'item_card_widget.dart';
+import 'item_card_course_widget.dart';
 
 class BodyCoursePageWidget extends StatelessWidget {
   final List<CourseModel> course;
@@ -26,7 +26,7 @@ class BodyCoursePageWidget extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text('Selecione a categoria:'),
+                    child: Text('${course.first.specialty.toUpperCase()}',style: AppTextStyle.black16w700Roboto,),
                   ),
                   Row(
                     children: [
@@ -42,7 +42,7 @@ class BodyCoursePageWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('${course.length}'),
+                        child: Text('${course.length}',style:AppTextStyle.black16w700Roboto,),
                       ),
                     ],
                   )
@@ -56,8 +56,7 @@ class BodyCoursePageWidget extends StatelessWidget {
               child: ListView(
                 children: course
                     .map((course) => ItemCardCourseWidget(
-                          onTap: () => Modular.to.pushNamed(AppRoutes.course,
-                              arguments: course),
+                          onTap: ()async=>await launch('${course.url}'),
                           course: course,
                         ))
                     .toList(),

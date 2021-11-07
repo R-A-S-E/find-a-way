@@ -13,35 +13,52 @@ class ItemCardHomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: AppColors.wine),
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-        ),
-        child: ListTile(
-          onTap: onTap,
-          title: Text(
-            'Area: ${specialty.category}',
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+      child: Card(
+        elevation: 6,
+        child: Container(          
+          decoration: BoxDecoration(
+            border: Border.all(color: AppColors.wine),
+            borderRadius: BorderRadius.all(Radius.circular(4)),
           ),
-          subtitle: Text(
-            'Sub-Area: ${specialty.subcategory}',
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-          ),
-          trailing: Container(
-            height: double.infinity,
-            width: 60,
-            decoration: BoxDecoration(
-              color: AppColors.wine,
-            ),
-            child: Center(
-                child: Text(specialty.specialty,
-                    overflow: TextOverflow.visible,
-                    maxLines: 1,
-                    style: AppTextStyle.white14w400Roboto)),
+          child: ListTile(
+            onTap: onTap,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Area: ${specialty.category}',
+                      style: AppTextStyle.black16w700Roboto,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    Text(
+                      'Sub: ${specialty.subcategory}',
+                      style: AppTextStyle.black12w700Roboto,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+        
+                  ],
+                ),
+                Container(
+                  height: 60,
+                  width: 80,
+                  decoration: BoxDecoration(            
+                    borderRadius: BorderRadius.all(Radius.circular(4)),        
+                    color: AppColors.wine,
+                  ),
+                  child: Center(
+                      child: Text(specialty.specialty,
+                          overflow: TextOverflow.visible,
+                          maxLines: 1,
+                          style: AppTextStyle.white14w400Roboto)),
+                ),
+              ],
+            ),        
           ),
         ),
       ),
