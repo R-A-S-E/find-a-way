@@ -39,6 +39,15 @@ mixin _$HomeStore on _HomeStoreBase, Store {
     });
   }
 
+  final _$setCoursesAsyncAction = AsyncAction('_HomeStoreBase.setCourses');
+
+  @override
+  Future<void> setCourses(
+      {List<SpecialtyModel>? values, SpecialtyModel? value}) {
+    return _$setCoursesAsyncAction
+        .run(() => super.setCourses(values: values, value: value));
+  }
+
   final _$_HomeStoreBaseActionController =
       ActionController(name: '_HomeStoreBase');
 
@@ -48,17 +57,6 @@ mixin _$HomeStore on _HomeStoreBase, Store {
         name: '_HomeStoreBase.setIsLoading');
     try {
       return super.setIsLoading(value);
-    } finally {
-      _$_HomeStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setCourses({List<SpecialtyModel>? values, SpecialtyModel? value}) {
-    final _$actionInfo = _$_HomeStoreBaseActionController.startAction(
-        name: '_HomeStoreBase.setCourses');
-    try {
-      return super.setCourses(values: values, value: value);
     } finally {
       _$_HomeStoreBaseActionController.endAction(_$actionInfo);
     }

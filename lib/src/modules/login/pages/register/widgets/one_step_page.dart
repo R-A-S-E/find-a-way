@@ -38,7 +38,7 @@ class OneStepPage extends StatelessWidget {
                 ),
                 Text(
                   'Insira seus dados abaixo.',
-                  style: AppTextStyle.wine32w700Roboto,
+                  style: AppTextStyle.wine20w700Roboto,
                 ),
               ],
             ),

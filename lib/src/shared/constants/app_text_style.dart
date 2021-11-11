@@ -9,7 +9,7 @@ class AppTextStyle {
     fontFamily: "Roboto",
     letterSpacing: 0.25,
   );
-  static const TextStyle wine32w700Roboto = TextStyle(
+  static const TextStyle wine20w700Roboto = TextStyle(
     color: AppColors.wine,
     fontWeight: FontWeight.w700,
     fontSize: 20,

@@ -11,9 +11,10 @@ class LoginStore = _LoginStoreBase with _$LoginStore;
 
 abstract class _LoginStoreBase with Store {
   final AuthStore authStore;
+  final FirebaseAuth firebaseAuth;
 
-  _LoginStoreBase(this.authStore);
-  FirebaseAuth auth = FirebaseAuth.instance;
+  _LoginStoreBase(this.authStore, this.firebaseAuth);
+
 
   @observable
   LoginState state = LoginState();
@@ -45,15 +46,15 @@ abstract class _LoginStoreBase with Store {
 
   void signIn(String email, String pass, VoidCallback onFail) async {
     isLoading = true;
-    auth.signInWithEmailAndPassword(email: email, password: pass).then((user) {
-      authStore.loginUser(user.user!.uid);
+    try {
+      final userCredential = await firebaseAuth.signInWithEmailAndPassword(email: email, password: pass);
+      await authStore.loginUser(userCredential.user!.uid);
       Modular.to.pushReplacementNamed(AppRoutes.home);
-
-      isLoading = false;
-    }).catchError((e) {
-      onFail();
-      isLoading = false;
-    });
+    } on FirebaseAuthException catch (e) {
+      setState(state.copyWith(passwordError: e.message));
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   TextEditingController emailController = TextEditingController();

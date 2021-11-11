@@ -39,7 +39,7 @@ class ThreeStepPage extends StatelessWidget {
                 ),
                 Text(
                   'Agora crie sua senha.',
-                  style: AppTextStyle.wine32w700Roboto,
+                  style: AppTextStyle.wine20w700Roboto,
                 ),
               ],
             ),

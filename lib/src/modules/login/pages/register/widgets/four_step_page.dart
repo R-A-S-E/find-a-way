@@ -34,7 +34,7 @@ class FourStepPage extends StatelessWidget {
                 ),
                 Text(
                   'Escolha as áreas de curso.',
-                  style: AppTextStyle.wine32w700Roboto,
+                  style: AppTextStyle.wine20w700Roboto,
                 ),
               ],
             ),

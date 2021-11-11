@@ -12,9 +12,9 @@ class RegisterStore = _RegisterStoreBase with _$RegisterStore;
 
 abstract class _RegisterStoreBase with Store {
   final RegisterRepository repository;
+  final FirebaseAuth firebaseAuth;
   final PageController pageController = PageController(initialPage: 0);
-  FirebaseAuth auth = FirebaseAuth.instance;
-  _RegisterStoreBase(this.repository);
+  _RegisterStoreBase(this.repository, this.firebaseAuth);
 
   @observable
   int currentPage = 0;
@@ -28,6 +28,8 @@ abstract class _RegisterStoreBase with Store {
 
   @observable
   bool isLoading = false;
+  @action
+  void setIsLoading(bool value) => isLoading = value;
 
   List cursos = [];
   List subcategoria = [];
@@ -70,21 +72,19 @@ abstract class _RegisterStoreBase with Store {
   }
 
   void signUp(
-      UserModel userModel, VoidCallback onSuccess, VoidCallback onFail) {
+      UserModel userModel, VoidCallback onSuccess, VoidCallback onFail) async {
+        
     isLoading = true;
-    auth
-        .createUserWithEmailAndPassword(
-            email: emailController.text, password: passwordController.text)
-        .then((user) async {
-      final User user = auth.currentUser!;
-      userModel = userModel.copyWith(uuid: user.uid);
+    try {
+      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text);
+      userModel = userModel.copyWith(uuid: userCredential.user!.uid);
       await _createUser(userModel);
-      onSuccess();
-      isLoading = false;
-    }).catchError((e) {
-      onFail();
-      isLoading = false;
-    });
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   Future<void> _createUser(UserModel userModel) async {

@@ -39,7 +39,7 @@ class TwoStepPage extends StatelessWidget {
                 ),
                 Text(
                   'Mais alguns dados.',
-                  style: AppTextStyle.wine32w700Roboto,
+                  style: AppTextStyle.wine20w700Roboto,
                 ),
               ],
             ),
