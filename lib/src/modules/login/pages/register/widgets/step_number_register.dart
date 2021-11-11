@@ -15,8 +15,6 @@ class StepNumberRegister extends StatelessWidget {
         step >= 2 ? ballCorrect() : ballNumber('2'),
         step >= 3 ? stripePurple() : stripe(),
         step >= 3 ? ballCorrect() : ballNumber('3'),
-        step >= 4 ? stripePurple() : stripe(),
-        step >= 4 ? ballCorrect() : ballNumber('4'),
       ],
     );
   }

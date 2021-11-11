@@ -36,7 +36,7 @@ abstract class _AuthStoreBase with Store implements Disposable {
 
   @computed
   List get specialty {
-    final List specialty = user!.specialty;
+    final List specialty = user!.specialty!;
     return specialty;
   }
 

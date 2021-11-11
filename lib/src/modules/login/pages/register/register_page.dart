@@ -1,5 +1,4 @@
 import 'package:curso_list/src/modules/login/pages/register/stores/register_store.dart';
-import 'package:curso_list/src/modules/login/pages/register/widgets/four_step_page.dart';
 import 'package:curso_list/src/modules/login/pages/register/widgets/one_step_page.dart';
 import 'package:curso_list/src/modules/login/pages/register/widgets/thee_step_page.dart';
 import 'package:curso_list/src/modules/login/pages/register/widgets/two_step_page.dart';
@@ -56,7 +55,6 @@ class _RegisterPageState extends ModularState<RegisterPage, RegisterStore> {
           OneStepPage(store: store),
           TwoStepPage(store: store),
           ThreeStepPage(store: store),
-          FourStepPage(store: store)
         ],
       ),
     );

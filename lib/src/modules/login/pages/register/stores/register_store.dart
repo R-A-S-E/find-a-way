@@ -31,10 +31,6 @@ abstract class _RegisterStoreBase with Store {
   @action
   void setIsLoading(bool value) => isLoading = value;
 
-  List cursos = [];
-  List subcategoria = [];
-  List especialidade = [];
-
   void pushPage() {
     pageController.jumpToPage(this.currentPage + 1);
   }
@@ -54,17 +50,12 @@ abstract class _RegisterStoreBase with Store {
       }
     } else if (currentPage == 2) {
       if (formKeyPassword.currentState!.validate()) {
-        pushPage();
-      }
-    } else if (currentPage == 3) {
-      if (formKeyCourses.currentState!.validate()) {
-        cursos.add(courseController.text);
         signUp(
             UserModel(
                 cpf: cpfController.text,
                 name: nameController.text,
                 phone: phoneController.text,
-                specialty: especialidade),
+                ),
             () {},
             () {});
       }
@@ -101,7 +92,6 @@ abstract class _RegisterStoreBase with Store {
   final formKeyNameAndEmail = GlobalKey<FormState>();
   final formKeyPhoneAndCpf = GlobalKey<FormState>();
   final formKeyPassword = GlobalKey<FormState>();
-  final formKeyCourses = GlobalKey<FormState>();
 
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -109,5 +99,4 @@ abstract class _RegisterStoreBase with Store {
   TextEditingController cpfController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController courseController = TextEditingController();
 }

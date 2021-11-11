@@ -8,7 +8,7 @@ class UserModel {
   final String cpf;
   final String name;
   final String phone;
-  final List specialty;
+  final List? specialty;
   final DateTime? createAt;
   final DateTime? updateAt;
 
@@ -17,7 +17,7 @@ class UserModel {
     required this.cpf,
     required this.name,
     required this.phone,
-    required this.specialty,
+    this.specialty,
     this.createAt,
     this.updateAt,
   });
