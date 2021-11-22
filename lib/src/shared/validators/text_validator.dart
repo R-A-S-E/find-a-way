@@ -9,6 +9,18 @@ class Validators {
     return value.isEmpty ? "Preencha corretamente o nome!" : null;
   }
 
+  String? validateCategory(String value) {
+    return value.isEmpty ? "Selecione uma categoria!" : null;
+  }
+  
+  String? validateSubCategory(String value) {
+    return value.isEmpty ? "Selecione uma sub-categoria!" : null;
+  }
+
+  String? validateSpecialty(String value) {
+    return value.isEmpty ? "Selecione uma especialidade!" : null;
+  }
+
   String? validatePass(String value) {
     return value.isEmpty ? "Insira uma senha!" : null;
   }

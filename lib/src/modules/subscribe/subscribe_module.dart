@@ -1,8 +1,8 @@
 import 'package:curso_list/src/modules/subscribe/pages/subscribe_page.dart';
-import 'package:curso_list/src/modules/subscribe/repositories/subscribe_repository_impl.dart';
 import 'package:curso_list/src/modules/subscribe/stores/subscribe_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../shared/constants/constants.dart';
+import 'data/repositories/subscribe_repository_impl.dart';
 
 
 class SubscribeModule extends Module {
