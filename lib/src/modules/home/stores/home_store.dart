@@ -44,7 +44,7 @@ abstract class _HomeStoreBase with Store {
     if(authStore.specialty.isNotEmpty){
       final course = await repository.getAllCursos(specialty: authStore.specialty);
       await setCourses(values: course);
-    }   
+    }
     await Future.delayed(Duration(seconds: 1));
     setIsLoading(false);
   }

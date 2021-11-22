@@ -59,7 +59,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.wine,
-        onPressed: () =>Modular.to.pushNamed(AppRoutes.subscribe),
+        onPressed: () async {
+          await Modular.to.pushNamed(AppRoutes.subscribe);
+          store.handleGetTransaction();
+        },
         child: Icon(
           Icons.add,
           size: 35,

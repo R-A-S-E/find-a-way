@@ -139,9 +139,10 @@ class _SubscribePageState extends ModularState<SubscribePage, SubscribeStore> {
                         height: 45,
                         child: GradientButton(
                             text: 'Adicionar',
-                            onTap: () {
+                            onTap: () async {
                               if (_formKey.currentState!.validate()) {
-                                // store.login();
+                               store.addSpecialty(controllerSpecialty.text);
+                               Modular.to.pop();
                               }
                             }),
                       ),

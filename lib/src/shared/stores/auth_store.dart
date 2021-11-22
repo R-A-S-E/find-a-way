@@ -13,6 +13,7 @@ class AuthStore = _AuthStoreBase with _$AuthStore;
 abstract class _AuthStoreBase with Store implements Disposable {
   final FirebaseAuth firebaseAuth;
   final AuthRepository repository;
+  
 
   _AuthStoreBase(this.firebaseAuth, this.repository);
 
@@ -38,6 +39,10 @@ abstract class _AuthStoreBase with Store implements Disposable {
   List get specialty {
     final List specialty = user!.specialty!;
     return specialty;
+  }
+
+  void addSpecialty({required String uuid, required List specialty}) async {
+    repository.addSpecialtyUser(uuid, specialty);
   }
 
   bool verifyAuthentication() {

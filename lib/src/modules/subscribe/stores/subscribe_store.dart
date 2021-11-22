@@ -92,4 +92,11 @@ abstract class _SubscribeStoreBase with Store {
         throw Exception();
       }
   }
+
+  void addSpecialty(String speci){
+    List data = authStore.user!.specialty!;
+    data.add(speci);
+    authStore.addSpecialty(specialty: data,uuid: authStore.user!.uuid!);
+  }
+
 }
