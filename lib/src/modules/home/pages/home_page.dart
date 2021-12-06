@@ -47,7 +47,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             child: Column(
               children: [
                 BodyHomePageWidget(
-                  specialty: store.courses,
+                  store: store,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,

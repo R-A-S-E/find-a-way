@@ -18,25 +18,28 @@ abstract class _SubscribeStoreBase with Store {
   ObservableList<SpecialtyModel> category = ObservableList<SpecialtyModel>();
   @action
   void setCategory({List<SpecialtyModel>? values}) {
-    if (values != null) { 
+    if (values != null) {
       category.clear();
       category.addAll(values);
     }
   }
-  Future<List<SpecialtyModel>> getCategory(String query) async {      
-      final course = await repository.getallcategory(collection: AppCollections.category, where:'category');
-      setCategory(values: course);
-      try{
+
+  Future<List<SpecialtyModel>> getCategory(String query) async {
+    final course = await repository.getallcategory(
+        collection: AppCollections.category, where: 'category');
+    setCategory(values: course);
+    try {
       return List.of(category).where((city) {
         final cityLower = city.category.toLowerCase();
-        final queryLower = query.toLowerCase();       
+        final queryLower = query.toLowerCase();
         return cityLower.contains(queryLower);
-      }).toList();    
-      }catch(e){
-        throw Exception();
-      }
+      }).toList();
+    } catch (e) {
+      throw Exception();
+    }
   }
-   //#######################SUB-CATEGORY####################################
+
+  //#######################SUB-CATEGORY####################################
   @observable
   String isEqualtoSubCategory = '';
   @action
@@ -46,25 +49,30 @@ abstract class _SubscribeStoreBase with Store {
   ObservableList<SpecialtyModel> subCategory = ObservableList<SpecialtyModel>();
   @action
   void setSubCategory({List<SpecialtyModel>? values}) {
-    if (values != null) { 
+    if (values != null) {
       subCategory.clear();
       subCategory.addAll(values);
     }
   }
-  Future<List<SpecialtyModel>> getSubCategory(String query) async {      
-      final coursesubCategory = await repository.getallcategory(collection: AppCollections.subcategory, where: AppCollections.category, isEqualto: isEqualtoSubCategory);
-      setSubCategory(values: coursesubCategory);
-      try{
+
+  Future<List<SpecialtyModel>> getSubCategory(String query) async {
+    final coursesubCategory = await repository.getallcategory(
+        collection: AppCollections.subcategory,
+        where: AppCollections.category,
+        isEqualto: isEqualtoSubCategory);
+    setSubCategory(values: coursesubCategory);
+    try {
       return List.of(subCategory).where((subCategoryImpl) {
         final subCategoryLower = subCategoryImpl.subcategory.toLowerCase();
-        final subCategoryQueryLower = query.toLowerCase();       
+        final subCategoryQueryLower = query.toLowerCase();
         return subCategoryLower.contains(subCategoryQueryLower);
-      }).toList();    
-      }catch(e){
-        throw Exception();
-      }
+      }).toList();
+    } catch (e) {
+      throw Exception();
+    }
   }
-   //#######################SPECIALTY####################################
+
+  //#######################SPECIALTY####################################
   @observable
   String isEqualtoSpecialty = '';
   @action
@@ -74,29 +82,34 @@ abstract class _SubscribeStoreBase with Store {
   ObservableList<SpecialtyModel> specialty = ObservableList<SpecialtyModel>();
   @action
   void setSpecialty({List<SpecialtyModel>? values}) {
-    if (values != null) { 
+    if (values != null) {
       specialty.clear();
       specialty.addAll(values);
     }
   }
-  Future<List<SpecialtyModel>> getSpecialty(String query) async {      
-      final courseSpecialty = await repository.getallcategory(collection: AppCollections.specialty, where: AppCollections.subcategory, isEqualto: isEqualtoSpecialty);
-      setSpecialty(values: courseSpecialty);
-      try{
+
+  Future<List<SpecialtyModel>> getSpecialty(String query) async {
+    final courseSpecialty = await repository.getallcategory(
+        collection: AppCollections.specialty,
+        where: AppCollections.subcategory,
+        isEqualto: isEqualtoSpecialty);
+    setSpecialty(values: courseSpecialty);
+    try {
       return List.of(specialty).where((specialtyImpl) {
         final specialtyLower = specialtyImpl.subcategory.toLowerCase();
-        final specialtyQueryLower = query.toLowerCase();       
+        final specialtyQueryLower = query.toLowerCase();
         return specialtyLower.contains(specialtyQueryLower);
-      }).toList();    
-      }catch(e){
-        throw Exception();
-      }
+      }).toList();
+    } catch (e) {
+      throw Exception();
+    }
   }
 
-  void addSpecialty(String speci){
+  void addSpecialty(String speci) {
     List data = authStore.user!.specialty!;
-    data.add(speci);
-    authStore.addSpecialty(specialty: data,uuid: authStore.user!.uuid!);
+    if (!data.contains(speci)) {
+      data.add(speci);
+    }
+    authStore.addSpecialty(specialty: data, uuid: authStore.user!.uuid!);
   }
-
 }

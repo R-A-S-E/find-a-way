@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 class ItemCardHomeWidget extends StatelessWidget {
   final SpecialtyModel specialty;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
-  const ItemCardHomeWidget({Key? key, required this.specialty, this.onTap})
+  const ItemCardHomeWidget({Key? key, required this.specialty, this.onTap, this.onLongPress})
       : super(key: key);
 
   @override
@@ -23,6 +24,7 @@ class ItemCardHomeWidget extends StatelessWidget {
           ),
           child: ListTile(
             onTap: onTap,
+            onLongPress: onLongPress,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -40,8 +42,7 @@ class ItemCardHomeWidget extends StatelessWidget {
                       style: AppTextStyle.black12w700Roboto,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                    ),
-        
+                    ),        
                   ],
                 ),
                 Container(

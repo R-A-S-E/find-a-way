@@ -11,7 +11,7 @@ abstract class _HomeStoreBase with Store {
   final SpecialtyRepository repository;
 
   _HomeStoreBase(this.authStore, this.repository);
-  
+
   Future<void> init() async {
     await handleGetTransaction();
   }
@@ -24,7 +24,8 @@ abstract class _HomeStoreBase with Store {
   @observable
   ObservableList<SpecialtyModel> courses = ObservableList<SpecialtyModel>();
   @action
-  Future<void> setCourses({List<SpecialtyModel>? values, SpecialtyModel? value}) async {
+  Future<void> setCourses(
+      {List<SpecialtyModel>? values, SpecialtyModel? value}) async {
     if (values != null) {
       courses.clear();
       courses.addAll(values);
@@ -41,11 +42,21 @@ abstract class _HomeStoreBase with Store {
 
   Future<void> handleGetTransaction() async {
     setIsLoading(true);
-    if(authStore.specialty.isNotEmpty){
-      final course = await repository.getAllCursos(specialty: authStore.specialty);
+    if (authStore.specialty.isNotEmpty) {
+      final course =
+          await repository.getAllCursos(specialty: authStore.specialty);
       await setCourses(values: course);
+    } else {
+      setCourses(values: []);
     }
     await Future.delayed(Duration(seconds: 1));
     setIsLoading(false);
+  }
+
+  void removeSpecialty(String speci) {
+    List data = authStore.user!.specialty!;
+    data.remove(speci);
+    authStore.addSpecialty(specialty: data, uuid: authStore.user!.uuid!);
+    handleGetTransaction();
   }
 }

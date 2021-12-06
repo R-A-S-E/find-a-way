@@ -42,7 +42,7 @@ abstract class _AuthStoreBase with Store implements Disposable {
   }
 
   void addSpecialty({required String uuid, required List specialty}) async {
-    repository.addSpecialtyUser(uuid, specialty);
+    repository.updateSpecialtyUser(uuid, specialty);
   }
 
   bool verifyAuthentication() {
